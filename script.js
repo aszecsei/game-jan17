@@ -454,9 +454,6 @@ function GameScreen() {
     };
 
     this.update = function(deltaTime) {
-        if(Key.isDown(Key.ESC)) {
-            SetUpScreen(PauseScreen);
-        }
 
         this.player.update(deltaTime);
         for(var i=0; i<this.enemies.length; i++) {
@@ -484,6 +481,10 @@ function GameScreen() {
         if(this.isGameOver) {
             Options.setOption("lastScore", game.score.toFixed(0));
             SetUpScreen(GameOverScreen);
+        }
+
+        if(Key.isDown(Key.ESC)) {
+            SetUpScreen(PauseScreen);
         }
     };
 

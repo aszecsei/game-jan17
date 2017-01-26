@@ -49,15 +49,164 @@ pick up any others until the current pickup's effects have worn off.
 var canvasWidth = 1100;
 var canvasHeight = 600;
 
+const debug = false;
+
 function Vector2(x, y) {
     this.x = x;
     this.y = y;
 }
 
-function GameObject(pos, name) {
-    this.pos = pos;
+function Player() {
+    this.pos = new Vector2(0, 0);
     this.vel = new Vector2(0, 0);
-    this.name = name;
+    this.speed = 0.25;
+    this.name = "Player";
+    this.angle = 0;
+    this.radius = 16;
+
+    this.update = function (deltaTime) {
+        this.vel.x = ((Key.isDown(Key.LEFT) || Key.isDown(Key.A)) ? -1 : 0) + ((Key.isDown(Key.RIGHT) || Key.isDown(Key.D)) ? 1 : 0);
+        this.vel.y = ((Key.isDown(Key.DOWN) || Key.isDown(Key.S)) ? -1 : 0) + ((Key.isDown(Key.UP) || Key.isDown(Key.W)) ? 1 : 0);
+
+        if(Key.pressed(Key.SPACE)) {
+            // TODO: Activate pickup
+        }
+
+        this.pos.x += this.vel.x * deltaTime * this.speed * (this.vel.x != 0 && this.vel.y != 0 ? Math.sqrt(2)/2 : 1);
+        this.pos.y += this.vel.y * deltaTime * this.speed * (this.vel.x != 0 && this.vel.y != 0 ? Math.sqrt(2)/2 : 1);
+
+        // collide with edges of screen
+        if(Math.abs(this.pos.y) + this.radius >= 202) {
+            const dist = 202 - (Math.abs(this.pos.y) + this.radius);
+            if(this.pos.y < 0) {
+                this.pos.y -= dist;
+            } else {
+                this.pos.y += dist;
+            }
+        }
+        if(Math.abs(this.pos.x) + this.radius >= 506) {
+            const dist = 506 - (Math.abs(this.pos.x) + this.radius);
+            if(this.pos.x < 0) {
+                this.pos.x -= dist;
+            } else {
+                this.pos.x += dist;
+            }
+        }
+    };
+
+    this.draw = function (ctx, deltaTime) {
+        const mX = this.pos.x + (canvasWidth/2);
+        const mY = this.pos.y * -1 + 144 + 202;
+
+        if(this.vel.x != 0 || this.vel.y != 0) {
+            if(Math.abs(this.vel.x) > Math.abs(this.vel.y)) {
+                this.angle = Math.PI / 2;
+            } else if(this.vel.x === -1 * this.vel.y) {
+                this.angle = -Math.PI / 4;
+            } else if(this.vel.x === this.vel.y) {
+                this.angle = Math.PI / 4;
+            } else if(Math.abs(this.vel.y) > Math.abs(this.vel.x)) {
+                this.angle = 0;
+            }
+        }
+
+        ctx.translate(mX, mY);
+        ctx.rotate(this.angle);
+        ctx.drawImage(resources.player, -34, -18);
+        if(debug) {
+            ctx.beginPath();
+            ctx.fillStyle = 'green';
+            ctx.arc(0, 0, this.radius, 0, 360);
+            ctx.fill();
+        }
+        ctx.rotate(-this.angle);
+        ctx.translate(-mX, -mY);
+    };
+}
+
+function BasicBee() {
+    this.pos = new Vector2(0, 0);
+    this.vel = new Vector2(0, 0);
+    this.speed = 0.2;
+    this.name = "BaB";
+    this.angle = 0;
+    this.hasEntered = false;
+    this.radius = 12;
+
+    this.update = function (deltaTime) {
+        const invNorm = 1/Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y);
+        this.pos.x += this.vel.x * deltaTime * this.speed * invNorm;
+        this.pos.y += this.vel.y * deltaTime * this.speed * invNorm;
+
+        // We'll start the bee outside the room's bounds
+        if(!this.hasEntered) {
+            if(Math.abs(this.pos.y) + this.radius < 202 && Math.abs(this.pos.x) + this.radius < 506) {
+                this.hasEntered = true;
+            }
+        } else {
+            // Check for collision once we've gotten inside the room!
+            // collide with edges of screen
+            if(Math.abs(this.pos.y) + this.radius >= 202) {
+                const dist = 202 - (Math.abs(this.pos.y) + this.radius);
+                if(this.pos.y < 0) {
+                    this.pos.y -= dist;
+                } else {
+                    this.pos.y += dist;
+                }
+
+                this.vel.y *= -1;
+                this.vel.x = Math.random() * 2 - 1;
+                this.vel.y = Math.random() * (this.vel.y < 0 ? -1 : 1);
+            }
+            if(Math.abs(this.pos.x) + this.radius >= 506) {
+                const dist = 506 - (Math.abs(this.pos.x) + this.radius);
+                if(this.pos.x < 0) {
+                    this.pos.x -= dist;
+                } else {
+                    this.pos.x += dist;
+                }
+
+                this.vel.x *= -1;
+                this.vel.x = Math.random() * (this.vel.x < 0 ? -1 : 1);
+                this.vel.y = Math.random() * 2 - 1;
+            }
+
+            // Check collision with player
+            const dx = this.pos.x - game.player.pos.x;
+            const dy = this.pos.y - game.player.pos.y;
+            const radDist = this.radius + game.player.radius;
+            const distSq = dx * dx + dy * dy;
+            if(distSq <= radDist * radDist) {
+                game.isGameOver = true;
+            } else {
+                const dist = Math.sqrt(distSq) - (this.radius + game.player.radius);
+                if(dist <= 32) {
+                    game.score += (-67*dist*dist/1024 + 2*dist + 4) * deltaTime / 100;
+                } else {
+                    game.score += deltaTime / 100;
+                }
+            }
+        }
+    };
+
+    this.draw = function (ctx, deltaTime) {
+        const mX = this.pos.x + (canvasWidth/2);
+        const mY = this.pos.y * -1 + 144 + 202;
+
+        this.angle = Math.atan2(this.vel.y, this.vel.x) + Math.PI/2;
+
+        ctx.translate(mX, mY);
+        ctx.rotate(-this.angle);
+        ctx.drawImage(resources.basicbee, -34, -18);
+        if(debug) {
+            ctx.beginPath();
+            ctx.fillStyle = 'red';
+            ctx.arc(0, 0, this.radius, 0, 360);
+            ctx.fill();
+        }
+        ctx.rotate(this.angle);
+        ctx.translate(-mX, -mY);
+    };
 }
 
 var Key = {
@@ -286,12 +435,55 @@ function PauseScreen() {
 
 function GameScreen() {
     this.init = function() {
+        this.score = 0;
+        this.player = new Player();
+        this.enemies = [];
+        this.spawners = [
+            new Vector2(-540, 0),
+            new Vector2(540, 0),
+            new Vector2(-376, 252),
+            new Vector2(376, 252),
+            new Vector2(-376, -240),
+            new Vector2(376, -240)
+        ];
 
+        this.lastSpawned = 0;
+        this.toSpawn = 2000;
+        this.numSpawnedAtOnce = 2;
+        this.isGameOver = false;
     };
 
     this.update = function(deltaTime) {
         if(Key.isDown(Key.ESC)) {
             SetUpScreen(PauseScreen);
+        }
+
+        this.player.update(deltaTime);
+        for(var i=0; i<this.enemies.length; i++) {
+            this.enemies[i].update(deltaTime);
+        }
+
+        // Spawn a new enemy
+        if(this.lastSpawned >= this.toSpawn) {
+            this.lastSpawned = 0;
+            if(this.enemies.length >= 10) {
+                this.toSpawn = 5000;
+            }
+
+            for(var i=0; i<this.numSpawnedAtOnce; i++) {
+                var bab = new BasicBee();
+                const spawn = this.spawners.randomElement();
+                bab.pos = new Vector2(spawn.x, spawn.y);
+                bab.vel = new Vector2((bab.pos.x < -500 ? 1 : (bab.pos.x > 500 ? -1 : Math.random() * 2 - 1)), (bab.pos.y < -100 ? 1 : (bab.pos.y > 100 ? -1 : Math.random() * 2 - 1)));
+                game.enemies.push(bab);
+            }
+        } else {
+            this.lastSpawned += deltaTime;
+        }
+
+        if(this.isGameOver) {
+            Options.setOption("lastScore", game.score.toFixed(0));
+            SetUpScreen(GameOverScreen);
         }
     };
 
@@ -299,9 +491,56 @@ function GameScreen() {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.drawImage(resources.bgImg, 0, 0, canvasWidth, canvasHeight);
         ctx.fillStyle = 'white';
-        ctx.font = "64pt 'Press Start 2P'";
-        const titleText = "GAME GAME GAME";
+        ctx.font = "16pt 'Press Start 2P'";
+        const titleText = "Score: " + this.score.toFixed(0);
+        ctx.fillText(titleText, 700, 50);
+
+        this.player.draw(ctx, deltaTime);
+        for(var i=0; i<this.enemies.length; i++) {
+            this.enemies[i].draw(ctx, deltaTime);
+        }
+
+        if(debug) {
+            for (var i = 0; i < this.spawners.length; i++) {
+                const mX = this.spawners[i].x + (canvasWidth / 2);
+                const mY = this.spawners[i].y * -1 + 144 + 202;
+
+                ctx.translate(mX, mY);
+                ctx.beginPath();
+                ctx.arc(0, 0, 10, 0, 360);
+                ctx.fillStyle = 'blue';
+                ctx.fill();
+                ctx.translate(-mX, -mY);
+            }
+        }
+    };
+}
+
+// TODO: Game over screen, including possible new high score
+function GameOverScreen() {
+    this.init = function() {
+    };
+
+    this.update = function(deltaTime) {
+        if(Key.pressed(Key.ENTER) || Key.pressed(Key.SPACE) || Key.pressed(Key.ESC)) {
+            SetUpScreen(TitleScreen);
+        }
+    };
+
+    this.draw = function(ctx, deltaTime) {
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        ctx.fillStyle = 'red';
+        ctx.font = "32pt 'Press Start 2P'";
+        const titleText = "GAME OVER";
         ctx.fillText(titleText, (canvasWidth - ctx.measureText(titleText).width)/2, canvasHeight/2);
+
+        ctx.font = "16pt 'Press Start 2P'";
+        ctx.fillStyle = 'white';
+        const scoreText = "Score: " + Options.getOption("lastScore");
+        ctx.fillText(scoreText, (canvasWidth - ctx.measureText(scoreText).width)/2, 400);
+        ctx.fillStyle = 'yellow';
+        const backText = "Main Menu";
+        ctx.fillText(backText, (canvasWidth - ctx.measureText(backText).width)/2, 500);
     };
 }
 
@@ -358,10 +597,17 @@ $(function() {
             y += lineHeight;
         }
     };
+    Array.prototype.randomElement = function () {
+        return this[Math.floor(Math.random() * this.length)]
+    }
 
     /* load all resources */
     resources.bgImg = new Image();
     resources.bgImg.src = "sprites/bg.png";
+    resources.player = new Image();
+    resources.player.src = "sprites/player.png";
+    resources.basicbee = new Image();
+    resources.basicbee.src = "sprites/basicbee.png";
     WebFont.load({
         google: {
             families: ['Press Start 2P']
@@ -376,7 +622,6 @@ $(function() {
 
     var last = -1;
 
-    const showFPS = true;
     var fpsList = [0];
 
     window.addEventListener('keyup', function(event) { if(Key.isDown(event.keyCode)) { Key.onKeyup(event); } event.preventDefault(); }, false);
@@ -391,13 +636,11 @@ $(function() {
             last = ts;
         }
 
-        // Key.flush();
-
         game.update(inc);
         game.draw(ctx, inc);
 
         /* FPS Counter */
-        if(showFPS) {
+        if(debug) {
             fpsList.push(inc);
             if(fpsList.length > 10) {
                 fpsList.shift();

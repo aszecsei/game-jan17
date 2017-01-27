@@ -63,14 +63,37 @@ function Player() {
     this.name = "Player";
     this.angle = 0;
     this.radius = 16;
+    this.pickup = "";
+    this.pickupttl = 0;
+    this.pickupactive = false;
 
     this.update = function (deltaTime) {
         this.vel.x = ((Key.isDown(Key.LEFT) || Key.isDown(Key.A)) ? -1 : 0) + ((Key.isDown(Key.RIGHT) || Key.isDown(Key.D)) ? 1 : 0);
         this.vel.y = ((Key.isDown(Key.DOWN) || Key.isDown(Key.S)) ? -1 : 0) + ((Key.isDown(Key.UP) || Key.isDown(Key.W)) ? 1 : 0);
 
-        if(Key.pressed(Key.SPACE)) {
-            // TODO: Activate pickup
+        if(this.pickupttl <= 0) {
+            if(this.pickup != "" && this.pickupactive) {
+                if(this.pickup === "BeeTime") {
+                    // Reset the game speed
+                    game.gameSpeed = 1;
+                }
+                this.pickup = "";
+                this.pickupactive = false;
+            }
+
+            if(Key.pressed(Key.SPACE) && this.pickupttl <= 0) {
+                // TODO: Activate pickup
+                if(this.pickup === "BeeTime") {
+                    this.pickupttl = 5000;
+                    // Set the game speed
+                    game.gameSpeed = 0.5;
+                    this.pickupactive = true;
+                }
+            }
+        } else {
+            this.pickupttl -= deltaTime / game.gameSpeed;
         }
+
 
         this.pos.x += this.vel.x * deltaTime * this.speed * (this.vel.x != 0 && this.vel.y != 0 ? Math.sqrt(2)/2 : 1);
         this.pos.y += this.vel.y * deltaTime * this.speed * (this.vel.x != 0 && this.vel.y != 0 ? Math.sqrt(2)/2 : 1);
@@ -197,7 +220,7 @@ function BasicBee() {
 
         ctx.translate(mX, mY);
         ctx.rotate(-this.angle);
-        ctx.drawImage(resources.basicbee, -34, -18);
+        ctx.drawImage(resources.basicbee, -36, -18);
         if(debug) {
             ctx.beginPath();
             ctx.fillStyle = 'red';
@@ -207,6 +230,132 @@ function BasicBee() {
         ctx.rotate(this.angle);
         ctx.translate(-mX, -mY);
     };
+}
+
+function BigBee() {
+    this.pos = new Vector2(0, 0);
+    this.vel = new Vector2(0, 0);
+    this.speed = 0.05;
+    this.name = "BiB";
+    this.angle = 0;
+    this.hasEntered = false;
+    this.radius = 48;
+
+    this.update = function (deltaTime) {
+        const invNorm = 1/Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y);
+        this.pos.x += this.vel.x * deltaTime * this.speed * invNorm;
+        this.pos.y += this.vel.y * deltaTime * this.speed * invNorm;
+
+        // We'll start the bee outside the room's bounds
+        if(!this.hasEntered) {
+            if(Math.abs(this.pos.y) + this.radius < 202 && Math.abs(this.pos.x) + this.radius < 506) {
+                this.hasEntered = true;
+            }
+        } else {
+            // Check for collision once we've gotten inside the room!
+            // collide with edges of screen
+            if(Math.abs(this.pos.y) + this.radius >= 202) {
+                const dist = 202 - (Math.abs(this.pos.y) + this.radius);
+                if(this.pos.y < 0) {
+                    this.pos.y -= dist;
+                } else {
+                    this.pos.y += dist;
+                }
+
+                this.vel.y *= -1;
+                this.vel.x = Math.random() * 2 - 1;
+                this.vel.y = Math.random() * (this.vel.y < 0 ? -1 : 1);
+            }
+            if(Math.abs(this.pos.x) + this.radius >= 506) {
+                const dist = 506 - (Math.abs(this.pos.x) + this.radius);
+                if(this.pos.x < 0) {
+                    this.pos.x -= dist;
+                } else {
+                    this.pos.x += dist;
+                }
+
+                this.vel.x *= -1;
+                this.vel.x = Math.random() * (this.vel.x < 0 ? -1 : 1);
+                this.vel.y = Math.random() * 2 - 1;
+            }
+
+            // Check collision with player
+            const dx = this.pos.x - game.player.pos.x;
+            const dy = this.pos.y - game.player.pos.y;
+            const radDist = this.radius + game.player.radius;
+            const distSq = dx * dx + dy * dy;
+            if(distSq <= radDist * radDist) {
+                game.isGameOver = true;
+            } else {
+                const dist = Math.sqrt(distSq) - (this.radius + game.player.radius);
+                if(dist <= 32) {
+                    game.score += (-67*dist*dist/1024 + 2*dist + 4) * 2 * deltaTime / 100;
+                } else {
+                    game.score += 2 * deltaTime / 100;
+                }
+            }
+        }
+    };
+
+    this.draw = function (ctx, deltaTime) {
+        const mX = this.pos.x + (canvasWidth/2);
+        const mY = this.pos.y * -1 + 144 + 202;
+
+        this.angle = Math.atan2(this.vel.y, this.vel.x) + Math.PI/2;
+
+        ctx.translate(mX, mY);
+        ctx.rotate(-this.angle);
+        ctx.drawImage(resources.bigbee, -130, -64);
+        if(debug) {
+            ctx.beginPath();
+            ctx.fillStyle = 'red';
+            ctx.arc(0, 0, this.radius, 0, 360);
+            ctx.fill();
+        }
+        ctx.rotate(this.angle);
+        ctx.translate(-mX, -mY);
+    };
+}
+
+function BeeTime() {
+    this.pos = new Vector2(0, 0);
+    this.ttl = 3000;
+    this.radius = 12;
+
+    this.update = function (deltaTime) {
+        this.ttl -= deltaTime;
+
+        if(this.ttl <= 0) {
+            game.pickups.shift();
+        }
+
+        // Check collision with player if they're not currently holding a pickup
+        if(game.player.pickup == "") {
+            const dx = this.pos.x - game.player.pos.x;
+            const dy = this.pos.y - game.player.pos.y;
+            const radDist = this.radius + game.player.radius;
+            const distSq = dx * dx + dy * dy;
+            if (distSq <= radDist * radDist) {
+                game.player.pickup = "BeeTime";
+                game.pickups.shift();
+            }
+        }
+    };
+    
+    this.draw = function (ctx, deltaTime) {
+        const mX = this.pos.x + (canvasWidth/2);
+        const mY = this.pos.y * -1 + 144 + 202;
+
+        ctx.translate(mX, mY);
+        ctx.drawImage(resources.beetime, -12, -14);
+        if(debug) {
+            ctx.beginPath();
+            ctx.fillStyle = 'cyan';
+            ctx.arc(0, 0, this.radius, 0, 360);
+            ctx.fill();
+        }
+        ctx.translate(-mX, -mY);
+    }
 }
 
 var Key = {
@@ -278,6 +427,13 @@ var Options = {
             }
             return "";
         }
+    },
+
+    clearScores: function() {
+        for(var i=0; i<10; i++) {
+            localStorage.removeItem("hs" + i);
+            localStorage.removeItem("hsname" + i);
+        }
     }
 };
 
@@ -333,11 +489,26 @@ function TitleScreen() {
 function OptionsScreen() {
     this.init = function(prevScreen) {
         this.prevScreen = prevScreen;
+        this.options = ["Clear High Scores", "Back"];
+        this.selected = this.options.length - 1;
     };
 
     this.update = function(deltaTime) {
+        if(Key.pressed(Key.UP) || Key.pressed(Key.W)) {
+            this.selected = (this.selected == 0 ? this.options.length - 1 : this.selected - 1);
+        }
+        if(Key.pressed(Key.DOWN) || Key.pressed(Key.S)) {
+            this.selected = (this.selected == this.options.length - 1 ? 0 : this.selected + 1);
+        }
+
         if(Key.pressed(Key.ENTER) || Key.pressed(Key.SPACE) || Key.pressed(Key.ESC)) {
-            game = this.prevScreen;
+            if(this.selected === 1) {
+                game = this.prevScreen;
+            } else if(this.selected === 0) {
+                // Clear high scores
+                Options.clearScores();
+                game = this.prevScreen;
+            }
         }
     };
 
@@ -347,10 +518,16 @@ function OptionsScreen() {
         ctx.font = "32pt 'Press Start 2P'";
         const titleText = "OPTIONS";
         ctx.fillText(titleText, (canvasWidth - ctx.measureText(titleText).width)/2, canvasHeight/2);
-        ctx.fillStyle = 'yellow';
-        ctx.font = "32px 'Press Start 2P'";
-        const backText = "Back";
-        ctx.fillText(backText, (canvasWidth - ctx.measureText(backText).width)/2, 400);
+
+        ctx.font = "16pt 'Press Start 2P'";
+        for(var i=0; i<this.options.length; i++) {
+            if(i === this.selected) {
+                ctx.fillStyle = 'yellow';
+            } else {
+                ctx.fillStyle = 'white';
+            }
+            ctx.fillText(this.options[i], (canvasWidth - ctx.measureText(this.options[i]).width)/2, 400 + (i * 50));
+        }
     };
 }
 
@@ -438,6 +615,7 @@ function GameScreen() {
         this.score = 0;
         this.player = new Player();
         this.enemies = [];
+        this.pickups = [];
         this.spawners = [
             new Vector2(-540, 0),
             new Vector2(540, 0),
@@ -446,18 +624,45 @@ function GameScreen() {
             new Vector2(-376, -240),
             new Vector2(376, -240)
         ];
+        this.pickupSpawners = [
+            new Vector2(0, 150),
+            new Vector2(0, 0),
+            new Vector2(0, -150),
+            new Vector2(-200, 150),
+            new Vector2(-200, 0),
+            new Vector2(-200, -150),
+            new Vector2(200, 150),
+            new Vector2(-200, 0),
+            new Vector2(200, -150),
+            new Vector2(480, 150),
+            new Vector2(480, 0),
+            new Vector2(480, -150),
+            new Vector2(-480, 150),
+            new Vector2(-480, 0),
+            new Vector2(-480, -150)
+        ];
 
         this.lastSpawned = 0;
         this.toSpawn = 2000;
         this.numSpawnedAtOnce = 2;
         this.isGameOver = false;
+
+        this.types = "bbBbbbbb";
+        this.pickupTypes = [BeeTime];
+        this.currentSpawn = 0;
+
+        this.gameSpeed = 1;
     };
 
     this.update = function(deltaTime) {
 
-        this.player.update(deltaTime);
+        this.player.update(deltaTime * this.gameSpeed);
         for(var i=0; i<this.enemies.length; i++) {
-            this.enemies[i].update(deltaTime);
+            this.enemies[i].update(deltaTime * this.gameSpeed);
+        }
+
+        for(var i=0; i<this.pickups.length; i++) {
+            this.pickups[i].update(deltaTime * this.gameSpeed);
         }
 
         // Spawn a new enemy
@@ -466,16 +671,35 @@ function GameScreen() {
             if(this.enemies.length >= 10) {
                 this.toSpawn = 5000;
             }
+            var enemy;
 
             for(var i=0; i<this.numSpawnedAtOnce; i++) {
-                var bab = new BasicBee();
-                const spawn = this.spawners.randomElement();
-                bab.pos = new Vector2(spawn.x, spawn.y);
-                bab.vel = new Vector2((bab.pos.x < -500 ? 1 : (bab.pos.x > 500 ? -1 : Math.random() * 2 - 1)), (bab.pos.y < -100 ? 1 : (bab.pos.y > 100 ? -1 : Math.random() * 2 - 1)));
-                game.enemies.push(bab);
+                if(this.types.charAt(this.currentSpawn) == 'b') {
+                    enemy = new BasicBee();
+                    const spawn = this.spawners.randomElement();
+                    enemy.pos = new Vector2(spawn.x, spawn.y);
+                    enemy.vel = new Vector2((enemy.pos.x < -500 ? 1 : (enemy.pos.x > 500 ? -1 : Math.random() * 2 - 1)), (enemy.pos.y < -100 ? 1 : (enemy.pos.y > 100 ? -1 : Math.random() * 2 - 1)));
+                    game.enemies.push(enemy);
+                } else if(this.types.charAt(this.currentSpawn) == 'B') {
+                    enemy = new BigBee();
+                    const spawn = this.spawners[Math.random() > 0.5 ? 1 : 0];
+                    enemy.pos = new Vector2(spawn.x, spawn.y);
+                    enemy.vel = new Vector2((enemy.pos.x < -500 ? 1 : (enemy.pos.x > 500 ? -1 : Math.random() * 2 - 1)), (enemy.pos.y < -100 ? 1 : (enemy.pos.y > 100 ? -1 : Math.random() * 2 - 1)));
+                    game.enemies.push(enemy);
+                }
+
+                this.currentSpawn = (this.currentSpawn + 1) % this.types.length;
+            }
+
+            // Randomly spawn pickups with enemies...this isn't optimal :/
+            if(Math.random() > 0.8) {
+                var bt = new (this.pickupTypes.randomElement())();
+                const pSpawn = this.pickupSpawners.randomElement();
+                bt.pos = new Vector2(pSpawn.x, pSpawn.y);
+                this.pickups.push(bt);
             }
         } else {
-            this.lastSpawned += deltaTime;
+            this.lastSpawned += deltaTime * this.gameSpeed;
         }
 
         if(this.isGameOver) {
@@ -496,9 +720,16 @@ function GameScreen() {
         const titleText = "Score: " + this.score.toFixed(0);
         ctx.fillText(titleText, 700, 50);
 
-        this.player.draw(ctx, deltaTime);
+        if(this.player.pickup === "BeeTime") {
+            ctx.drawImage(resources.beetime, 650, 50);
+        }
+
+        this.player.draw(ctx, deltaTime * this.gameSpeed);
         for(var i=0; i<this.enemies.length; i++) {
-            this.enemies[i].draw(ctx, deltaTime);
+            this.enemies[i].draw(ctx, deltaTime * this.gameSpeed);
+        }
+        for(var i=0; i<this.pickups.length; i++) {
+            this.pickups[i].draw(ctx, deltaTime * this.gameSpeed);
         }
 
         if(debug) {
@@ -524,7 +755,7 @@ function GameOverScreen() {
 
     this.update = function(deltaTime) {
         if(Key.pressed(Key.ENTER) || Key.pressed(Key.SPACE) || Key.pressed(Key.ESC)) {
-            SetUpScreen(TitleScreen);
+            SetUpScreen(HighScoreScreen);
         }
     };
 
@@ -545,6 +776,124 @@ function GameOverScreen() {
     };
 }
 
+function HighScoreScreen() {
+    this.init = function () {
+        this.letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+        this.hsIndex = -1;
+        this.charAt = 0;
+
+        this.highScores = [];
+        var index = 0;
+        const lastScore = parseInt(Options.getOption("lastScore"));
+        const h0 = Options.getOption("hs0");
+        if(undefined === h0 || "" === h0 || null === h0 || "null" === h0 ) {
+            // Fill It Up With Friends
+            var friends = [
+                {name: "BER", score: 50000},
+                {name: "DOM", score: 10000},
+                {name: "RBN", score: 7500},
+                {name: "PIG", score: 5000},
+                {name: "RED", score: 2500}
+            ];
+            for(var i=0; i<friends.length; i++) {
+                Options.setOption("hs" + i, friends[i].score);
+                Options.setOption("hsname" + i, friends[i].name);
+            }
+        }
+        for(var ct=0; ct<10; ct++) {
+            const h = Options.getOption("hs" + index);
+            if(undefined !== h && "" !== h && null !== h && "null" !== h) {
+                if(lastScore > h && this.hsIndex === -1) {
+                    this.highScores.push({score: lastScore, name: "AAA", isMine: true});
+                    this.hsIndex = ct;
+                    ct++;
+                    if(this.highScores.length < 10) {
+                        this.highScores.push({score: h, name: Options.getOption("hsname" + index), isMine: false});
+                    }
+                } else {
+                    this.highScores.push({score: h, name: Options.getOption("hsname" + index), isMine: false});
+                }
+                index++;
+            } else {
+                break;
+            }
+        }
+        if(this.highScores.length < 10 && this.hsIndex === -1) {
+            this.highScores.push({score: lastScore, name: "AAA", isMine: true});
+            this.hsIndex = this.highScores.length - 1;
+        }
+    };
+
+    this.update = function (deltaTime) {
+        if(Key.pressed(Key.UP) || Key.pressed(Key.W)) {
+            const curIndex = this.letters.indexOf(this.highScores[this.hsIndex].name.charAt(this.charAt));
+            this.highScores[this.hsIndex].name = this.highScores[this.hsIndex].name.replaceAt(this.charAt, this.letters[(curIndex + 1) % this.letters.length]);
+        }
+        if(Key.pressed(Key.DOWN) || Key.pressed(Key.S)) {
+            const curIndex = this.letters.indexOf(this.highScores[this.hsIndex].name.charAt(this.charAt));
+            this.highScores[this.hsIndex].name = this.highScores[this.hsIndex].name.replaceAt(this.charAt, this.letters[(curIndex - 1) + (curIndex == 0 ? this.letters.length : 0)]);
+        }
+        if(Key.pressed(Key.LEFT) || Key.pressed(Key.A)) {
+            this.charAt = (this.charAt - 1)  + (this.charAt == 0 ? 3 : 0);
+        }
+        if(Key.pressed(Key.RIGHT) || Key.pressed(Key.D)) {
+            this.charAt = (this.charAt + 1) % 3;
+        }
+
+        if(Key.pressed(Key.ENTER) || Key.pressed(Key.SPACE)) {
+            // Save out the high scores
+            for(var i=0; i<this.highScores.length; i++) {
+                Options.setOption("hs" + i, this.highScores[i].score);
+                Options.setOption("hsname" + i, this.highScores[i].name);
+            }
+
+            // Return to main menu
+            SetUpScreen(TitleScreen);
+        }
+    };
+
+    this.draw = function (ctx, deltaTime) {
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        ctx.font = "16pt 'Press Start 2P'";
+        ctx.fillStyle = 'red';
+
+        const hsText = "High Scores";
+        ctx.fillText(hsText, (canvasWidth - ctx.measureText(hsText).width)/2, 50);
+
+        for(var i=0; i<this.highScores.length; i++) {
+            if (undefined !== this.highScores[i]) {
+                if (i === this.hsIndex) {
+                    var preText = this.highScores[i].name.substr(0, this.charAt);
+                    var postText = this.highScores[i].name.substr(this.charAt + 1);
+                    var selText = this.highScores[i].name.charAt(this.charAt);
+
+                    const initX = canvasWidth / 2 - (50 + ctx.measureText(this.highScores[i].name).width);
+                    const initY = 50 * (i + 2);
+
+                    // Draw preText
+                    // ctx.font = "16pt 'Press Start 2P'";
+                    ctx.fillStyle = 'yellow';
+                    ctx.fillText(preText, initX, initY);
+
+                    // draw selText
+                    // ctx.font =  "underline 16pt 'Press Start 2P'";
+                    ctx.fillStyle = 'red';
+                    ctx.fillText(selText, initX + ctx.measureText(preText).width, initY);
+
+                    // draw postText
+                    // ctx.font = "16pt 'Press Start 2P'";
+                    ctx.fillStyle = 'yellow';
+                    ctx.fillText(postText, initX + ctx.measureText(preText).width + ctx.measureText(selText).width, initY);
+                } else {
+                    ctx.fillStyle = 'white';
+                    ctx.fillText(this.highScores[i].name, canvasWidth / 2 - (50 + ctx.measureText(this.highScores[i].name).width), 50 * (i + 2));
+                }
+                ctx.fillText(this.highScores[i].score, canvasWidth / 2 + 50, 50 * (i + 2));
+            }
+        }
+    };
+}
+
 var game;
 var resources = {};
 
@@ -560,7 +909,7 @@ $(function() {
     var body = $("body");
     var blackColor = "#000";
     var whiteColor = "#fff";
-    body.html("<br /><br /><br /><p><canvas id='canvas' width='1100' height='600'></canvas></p>");
+    body.html("<br /><br /><br /><p><canvas id='canvas' width='" + canvasWidth + "' height='" + canvasHeight + "'></canvas></p>");
     body.css("background", blackColor);
     body.css('color', whiteColor);
     var qCanvas = $("#canvas");
@@ -601,6 +950,9 @@ $(function() {
     Array.prototype.randomElement = function () {
         return this[Math.floor(Math.random() * this.length)]
     }
+    String.prototype.replaceAt=function(index, character) {
+        return this.substr(0, index) + character + this.substr(index+character.length);
+    };
 
     /* load all resources */
     resources.bgImg = new Image();
@@ -609,6 +961,10 @@ $(function() {
     resources.player.src = "sprites/player.png";
     resources.basicbee = new Image();
     resources.basicbee.src = "sprites/basicbee.png";
+    resources.bigbee = new Image();
+    resources.bigbee.src = "sprites/bigbee.png";
+    resources.beetime = new Image();
+    resources.beetime.src = "sprites/beetime.png";
     WebFont.load({
         google: {
             families: ['Press Start 2P']

@@ -82,7 +82,6 @@ function Player() {
             }
 
             if(Key.pressed(Key.SPACE) && this.pickupttl <= 0) {
-                // TODO: Activate pickup
                 if(this.pickup === "BeeTime") {
                     this.pickupttl = 5000;
                     // Set the game speed
@@ -117,7 +116,7 @@ function Player() {
         }
     };
 
-    this.draw = function (ctx, deltaTime) {
+    this.draw = function (ctx) {
         const mX = this.pos.x + (canvasWidth/2);
         const mY = this.pos.y * -1 + 144 + 202;
 
@@ -212,7 +211,7 @@ function BasicBee() {
         }
     };
 
-    this.draw = function (ctx, deltaTime) {
+    this.draw = function (ctx) {
         const mX = this.pos.x + (canvasWidth/2);
         const mY = this.pos.y * -1 + 144 + 202;
 
@@ -297,7 +296,7 @@ function BigBee() {
         }
     };
 
-    this.draw = function (ctx, deltaTime) {
+    this.draw = function (ctx) {
         const mX = this.pos.x + (canvasWidth/2);
         const mY = this.pos.y * -1 + 144 + 202;
 
@@ -342,7 +341,7 @@ function BeeTime() {
         }
     };
     
-    this.draw = function (ctx, deltaTime) {
+    this.draw = function (ctx) {
         const mX = this.pos.x + (canvasWidth/2);
         const mY = this.pos.y * -1 + 144 + 202;
 
@@ -443,7 +442,7 @@ function TitleScreen() {
         this.menuItems = ['Start', 'Options', 'Credits'];
     };
 
-    this.update = function(deltaTime) {
+    this.update = function() {
         if(Key.pressed(Key.UP) || Key.pressed(Key.W)) {
             if(this.selected != 0) {
                 this.selected -= 1;
@@ -466,7 +465,7 @@ function TitleScreen() {
         }
     };
 
-    this.draw = function(ctx, deltaTime) {
+    this.draw = function(ctx) {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.fillStyle = 'white';
         ctx.font = "64pt 'Press Start 2P'";
@@ -485,7 +484,7 @@ function TitleScreen() {
     };
 }
 
-// TODO: Make this work.
+// TODO: Add more options.
 function OptionsScreen() {
     this.init = function(prevScreen) {
         this.prevScreen = prevScreen;
@@ -493,7 +492,7 @@ function OptionsScreen() {
         this.selected = this.options.length - 1;
     };
 
-    this.update = function(deltaTime) {
+    this.update = function() {
         if(Key.pressed(Key.UP) || Key.pressed(Key.W)) {
             this.selected = (this.selected == 0 ? this.options.length - 1 : this.selected - 1);
         }
@@ -512,7 +511,7 @@ function OptionsScreen() {
         }
     };
 
-    this.draw = function(ctx, deltaTime) {
+    this.draw = function(ctx) {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.fillStyle = 'red';
         ctx.font = "32pt 'Press Start 2P'";
@@ -537,13 +536,13 @@ function CreditsScreen() {
         this.credits = ['Designed by Alic Szecsei', 'Artwork by Alyse Giznsky'];
     };
 
-    this.update = function(deltaTime) {
+    this.update = function() {
         if(Key.pressed(Key.ENTER) || Key.pressed(Key.SPACE) || Key.pressed(Key.ESC)) {
             game = this.prevScreen;
         }
     };
 
-    this.draw = function(ctx, deltaTime) {
+    this.draw = function(ctx) {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.fillStyle = 'red';
         ctx.font = "64pt 'Press Start 2P'";
@@ -568,7 +567,7 @@ function PauseScreen() {
         this.menuItems = ['Resume', 'Options', 'Quit'];
     };
 
-    this.update = function (deltaTime) {
+    this.update = function () {
         if(Key.pressed(Key.UP) || Key.pressed(Key.W)) {
             if(this.selected != 0) {
                 this.selected -= 1;
@@ -591,7 +590,7 @@ function PauseScreen() {
         }
     };
 
-    this.draw = function (ctx, deltaTime) {
+    this.draw = function (ctx) {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.fillStyle = 'red';
         ctx.font = "32pt 'Press Start 2P'";
@@ -657,11 +656,13 @@ function GameScreen() {
     this.update = function(deltaTime) {
 
         this.player.update(deltaTime * this.gameSpeed);
-        for(var i=0; i<this.enemies.length; i++) {
+        var i;
+
+        for(i=0; i<this.enemies.length; i++) {
             this.enemies[i].update(deltaTime * this.gameSpeed);
         }
 
-        for(var i=0; i<this.pickups.length; i++) {
+        for(i=0; i<this.pickups.length; i++) {
             this.pickups[i].update(deltaTime * this.gameSpeed);
         }
 
@@ -673,7 +674,7 @@ function GameScreen() {
             }
             var enemy;
 
-            for(var i=0; i<this.numSpawnedAtOnce; i++) {
+            for(i=0; i<this.numSpawnedAtOnce; i++) {
                 if(this.types.charAt(this.currentSpawn) == 'b') {
                     enemy = new BasicBee();
                     const spawn = this.spawners.randomElement();
@@ -725,15 +726,16 @@ function GameScreen() {
         }
 
         this.player.draw(ctx, deltaTime * this.gameSpeed);
-        for(var i=0; i<this.enemies.length; i++) {
+        var i;
+        for(i=0; i<this.enemies.length; i++) {
             this.enemies[i].draw(ctx, deltaTime * this.gameSpeed);
         }
-        for(var i=0; i<this.pickups.length; i++) {
+        for(i=0; i<this.pickups.length; i++) {
             this.pickups[i].draw(ctx, deltaTime * this.gameSpeed);
         }
 
         if(debug) {
-            for (var i = 0; i < this.spawners.length; i++) {
+            for (i = 0; i < this.spawners.length; i++) {
                 const mX = this.spawners[i].x + (canvasWidth / 2);
                 const mY = this.spawners[i].y * -1 + 144 + 202;
 
@@ -748,18 +750,17 @@ function GameScreen() {
     };
 }
 
-// TODO: Game over screen, including possible new high score
 function GameOverScreen() {
     this.init = function() {
     };
 
-    this.update = function(deltaTime) {
+    this.update = function() {
         if(Key.pressed(Key.ENTER) || Key.pressed(Key.SPACE) || Key.pressed(Key.ESC)) {
             SetUpScreen(HighScoreScreen);
         }
     };
 
-    this.draw = function(ctx, deltaTime) {
+    this.draw = function(ctx) {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.fillStyle = 'red';
         ctx.font = "32pt 'Press Start 2P'";
@@ -771,7 +772,7 @@ function GameOverScreen() {
         const scoreText = "Score: " + Options.getOption("lastScore");
         ctx.fillText(scoreText, (canvasWidth - ctx.measureText(scoreText).width)/2, 400);
         ctx.fillStyle = 'yellow';
-        const backText = "Main Menu";
+        const backText = "High Scores";
         ctx.fillText(backText, (canvasWidth - ctx.measureText(backText).width)/2, 500);
     };
 }
@@ -824,7 +825,7 @@ function HighScoreScreen() {
         }
     };
 
-    this.update = function (deltaTime) {
+    this.update = function () {
         if(Key.pressed(Key.UP) || Key.pressed(Key.W)) {
             const curIndex = this.letters.indexOf(this.highScores[this.hsIndex].name.charAt(this.charAt));
             this.highScores[this.hsIndex].name = this.highScores[this.hsIndex].name.replaceAt(this.charAt, this.letters[(curIndex + 1) % this.letters.length]);
@@ -852,7 +853,7 @@ function HighScoreScreen() {
         }
     };
 
-    this.draw = function (ctx, deltaTime) {
+    this.draw = function (ctx) {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.font = "16pt 'Press Start 2P'";
         ctx.fillStyle = 'red';
@@ -949,7 +950,7 @@ $(function() {
     };
     Array.prototype.randomElement = function () {
         return this[Math.floor(Math.random() * this.length)]
-    }
+    };
     String.prototype.replaceAt=function(index, character) {
         return this.substr(0, index) + character + this.substr(index+character.length);
     };

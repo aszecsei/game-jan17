@@ -1164,17 +1164,19 @@ function GameScreen() {
         this.gameSpeed = 1;
 
         this.source = audioContext.createBufferSource();
-        this.source.buffer = resources.bgm;
-        this.source.loop = true;
+        if(resources.bgm !== null) {
+            this.source.buffer = resources.bgm;
+            this.source.loop = true;
 
-        this.gainNode = audioContext.createGain();
+            this.gainNode = audioContext.createGain();
 
-        this.source.connect(this.gainNode);
-        this.gainNode.connect(audioContext.destination);
-        this.gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime);
-        this.gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + fadeInTime);
-        this.source.start(0);
-    };
+            this.source.connect(this.gainNode);
+            this.gainNode.connect(audioContext.destination);
+            this.gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime);
+            this.gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + fadeInTime);
+            this.source.start(0);
+        }
+    }
 
     this.update = function(deltaTime) {
 

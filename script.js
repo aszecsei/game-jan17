@@ -1094,8 +1094,10 @@ function PauseScreen() {
             } else if(this.selected === 1) {
                 SetUpScreen(OptionsScreen);
             } else if(this.selected === 2) {
-                this.prevScreen.gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime);
-                this.prevScreen.gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + fadeOutTime);
+                if(this.prevScreen.gainNode) {
+                    this.prevScreen.gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime);
+                    this.prevScreen.gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + fadeOutTime);
+                }
                 SetUpScreen(TitleScreen);
             }
         }
@@ -1250,8 +1252,10 @@ function GameScreen() {
         if(this.isGameOver) {
             Options.setOption("lastScore", game.score.toFixed(0));
             SetUpScreen(GameOverScreen);
-            this.gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime);
-            this.gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + fadeOutTime);
+            if(this.gainNode) {
+                this.gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime);
+                this.gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + fadeOutTime);
+            }
         }
 
         if(Key.isDown(Key.ESC)) {

@@ -794,10 +794,19 @@ function BumbleBee() {
 }
 
 function LaserBee() {
+    this.StateEnum = {
+      DRIFT: 0,
+      CHARGE: 1,
+      FIRE: 2
+    };
+
+    this.state = this.StateEnum.DRIFT;
+
     this.pos = new Vector2(0, 0);
     this.vel = new Vector2(0, 0);
     this.speed = 0.1;
-    this.name = "BuB";
+    this.fireSpeed = 10;
+    this.name = "LasB";
     this.radius = 20;
 
     this.beePos = new Vector2(0, 0);

@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c151c6b8-4c8a-4504-ac4d-2dc6cf1a03eb" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script.js" afterPath="$PROJECT_DIR$/script.js" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="game-jan17" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="841">
+              <caret line="964" column="32" lean-forward="true" selection-start-line="964" selection-start-column="32" selection-end-line="964" selection-end-column="32" />
+              <folding>
+                <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+                <element signature="n#!!block;n#Player#0" expanded="false" />
+                <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+                <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+                <element signature="n#!!block;n#Honey#0" expanded="false" />
+                <element signature="n#!!block;n#BigBee#0" expanded="false" />
+                <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+                <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+                <element signature="e#36611#37390#0" expanded="false" />
+                <element signature="e#37505#38550#0" expanded="false" />
+                <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+                <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+                <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+                <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+                <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+                <element signature="e#46295#46516#0" expanded="false" />
+                <element signature="e#46548#47079#0" expanded="false" />
+                <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+                <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+                <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+                <element signature="e#61463#61558#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>on</find>
+      <find>onkey</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/style.css" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/temp.js" />
+        <option value="$PROJECT_DIR$/script.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="3026" />
+    <option name="height" value="1946" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-jan17" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-jan17" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-jan17" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-jan17" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="ToolWindowEvent Log.ShowToolbar" value="false" />
+    <property name="ignore_missing_gitignore" value="true" />
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/game-jan17/index.html">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c151c6b8-4c8a-4504-ac4d-2dc6cf1a03eb" name="Default" comment="" />
+      <created>1485220736568</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1485220736568</updated>
+      <workItem from="1485220738810" duration="35353000" />
+      <workItem from="1485462289094" duration="28011000" />
+      <workItem from="1485805500855" duration="10343000" />
+      <workItem from="1486423985305" duration="122000" />
+      <workItem from="1486424153400" duration="368000" />
+      <workItem from="1487374131134" duration="871000" />
+      <workItem from="1487629847962" duration="13000" />
+      <workItem from="1491261197803" duration="13000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1485222562371</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1485222562371</updated>
+    </task>
+    <task id="LOCAL-00002" summary="initial commit">
+      <created>1485222578285</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1485222578285</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added a menu system and other stuff">
+      <created>1485392630589</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1485392630589</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added gfx">
+      <created>1485392738170</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1485392738170</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added enemies!">
+      <created>1485412598018</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1485412598018</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed error when pausing the game">
+      <created>1485415106847</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1485415106847</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added powerups and high scores">
+      <created>1485545678552</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1485545678552</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fixed warnings">
+      <created>1485545965178</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1485545965178</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added eldritch bees and honey bees">
+      <created>1485977202422</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1485977202422</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix issue where the audio not loading would crash the game">
+      <created>1485977281758</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1485977281758</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix other issue where the audio not loading would crash the game">
+      <created>1485977704031</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1485977704031</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="75094000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-13" y="-13" width="3026" height="1946" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11941813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19647202" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="1.0" sideWeight="0.5013532" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2810219" sideWeight="0.49864683" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907543" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23418492" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27550432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="added a menu system and other stuff" />
+    <MESSAGE value="added gfx" />
+    <MESSAGE value="added enemies!" />
+    <MESSAGE value="fixed error when pausing the game" />
+    <MESSAGE value="added powerups and high scores" />
+    <MESSAGE value="fixed text" />
+    <MESSAGE value="fixed warnings" />
+    <MESSAGE value="added eldritch bees and honey bees" />
+    <MESSAGE value="fix issue where the audio not loading would crash the game" />
+    <MESSAGE value="fix other issue where the audio not loading would crash the game" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix other issue where the audio not loading would crash the game" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#36611#37390#0" expanded="false" />
+            <element signature="e#37505#38550#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#46295#46516#0" expanded="false" />
+            <element signature="e#46548#47079#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#61463#61558#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#36611#37390#0" expanded="false" />
+            <element signature="e#37505#38550#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#46295#46516#0" expanded="false" />
+            <element signature="e#46548#47079#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#61463#61558#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#36611#37390#0" expanded="false" />
+            <element signature="e#37505#38550#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#46295#46516#0" expanded="false" />
+            <element signature="e#46548#47079#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#61463#61558#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#36611#37390#0" expanded="false" />
+            <element signature="e#37505#38550#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#46295#46516#0" expanded="false" />
+            <element signature="e#46548#47079#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#61463#61558#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#36611#37390#0" expanded="false" />
+            <element signature="e#37505#38550#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#46295#46516#0" expanded="false" />
+            <element signature="e#46548#47079#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#61463#61558#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="23" column="7" lean-forward="false" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#36611#37390#0" expanded="false" />
+            <element signature="e#37505#38550#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#46295#46516#0" expanded="false" />
+            <element signature="e#46548#47079#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#61463#61558#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#36611#37390#0" expanded="false" />
+            <element signature="e#37505#38550#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#46295#46516#0" expanded="false" />
+            <element signature="e#46548#47079#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#61463#61558#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/webfontkit-20170125-154319/stylesheet.css" />
+    <entry file="file://$PROJECT_DIR$/style.css" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_ajax.googleapis.com_ajax_libs_jquery_3.1.1_jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="2" column="13827" lean-forward="false" selection-start-line="2" selection-start-column="13827" selection-end-line="2" selection-end-column="13827" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="1339" column="0" lean-forward="false" selection-start-line="1339" selection-start-column="0" selection-end-line="1339" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="1274" column="0" lean-forward="false" selection-start-line="1274" selection-start-column="0" selection-end-line="1274" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprites/basicbee.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.js" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="528" column="0" lean-forward="false" selection-start-line="528" selection-start-column="0" selection-end-line="528" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="964" column="32" lean-forward="true" selection-start-line="964" selection-start-column="32" selection-end-line="964" selection-end-column="32" />
+          <folding>
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#36611#37390#0" expanded="false" />
+            <element signature="e#37505#38550#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#46295#46516#0" expanded="false" />
+            <element signature="e#46548#47079#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#61463#61558#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

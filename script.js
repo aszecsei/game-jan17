@@ -793,6 +793,200 @@ function BumbleBee() {
     };
 }
 
+function LaserBee() {
+    this.pos = new Vector2(0, 0);
+    this.vel = new Vector2(0, 0);
+    this.speed = 0.1;
+    this.name = "BuB";
+    this.radius = 20;
+
+    this.beePos = new Vector2(0, 0);
+    this.beeRadius = 0;
+    this.angVel = -0.002;
+    this.radVel = 0.01;
+    this.maxRad = 100;
+    this.angle = 0;
+
+    this.hasEntered = false;
+
+    this.calculateBeePos = function () {
+        this.beePos.x = this.beeRadius * Math.cos(this.angle) + this.pos.x;
+        this.beePos.y = this.beeRadius * Math.sin(this.angle) + this.pos.y;
+    };
+
+    this.update = function (deltaTime) {
+        const invNorm = 1/Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y);
+        this.pos.x += this.vel.x * deltaTime * this.speed * invNorm;
+        this.pos.y += this.vel.y * deltaTime * this.speed * invNorm;
+
+        this.angle += this.angVel * deltaTime;
+        this.calculateBeePos();
+
+        if(this.beeRadius < this.maxRad) {
+            this.beeRadius += this.radVel * deltaTime;
+        }
+
+        // We'll start the bee outside the room's bounds
+        if(!this.hasEntered) {
+            if(Math.abs(this.beePos.y) + this.radius < 202 && Math.abs(this.beePos.x) + this.radius < 506) {
+                this.hasEntered = true;
+            }
+        } else {
+            // Check for collision once we've gotten inside the room!
+
+            // collide with edges of screen
+            if(Math.abs(this.pos.y) + this.radius >= 202) {
+                const dist = 202 - (Math.abs(this.pos.y) + this.radius);
+                if(this.pos.y < 0) {
+                    this.pos.y -= dist;
+                } else {
+                    this.pos.y += dist;
+                }
+
+                this.vel.y *= -1;
+                this.vel.x = Math.random() * 2 - 1;
+                this.vel.y = Math.random() * (this.vel.y < 0 ? -1 : 1);
+            }
+            if(Math.abs(this.pos.x) + this.radius >= 506) {
+                const dist = 506 - (Math.abs(this.pos.x) + this.radius);
+                if(this.pos.x < 0) {
+                    this.pos.x -= dist;
+                } else {
+                    this.pos.x += dist;
+                }
+
+                this.vel.x *= -1;
+                this.vel.x = Math.random() * (this.vel.x < 0 ? -1 : 1);
+                this.vel.y = Math.random() * 2 - 1;
+            }
+
+            this.calculateBeePos();
+
+            // Set the angle to bee positive
+            while(this.angle >= Math.PI * 2) {
+                this.angle -= Math.PI * 2;
+            }
+            while(this.angle < 0) {
+                this.angle += Math.PI * 2;
+            }
+
+            if(Math.abs(this.beePos.y) + this.radius >= 202) {
+                const dist = (Math.abs(this.beePos.y) + this.radius - 202);
+                var correction;
+                if(this.beePos.y > 0) {
+                    // We are hitting the upper wall
+                    // we must be in quadrant i or ii
+                    if(this.angle <= Math.PI / 4) {
+                        // quadrant i
+                        correction = dist / Math.sin(this.angle);
+                    } else {
+                        // quadrant ii
+                        const mAng = Math.PI - this.angle;
+                        correction = dist / Math.sin(mAng);
+                    }
+                } else {
+                    // We are hitting the bottom wall
+                    // Either quadrant iii or iv
+                    if(this.angle <= 3 * Math.PI / 2) {
+                        // quadrant iii
+                        const mAng = this.angle - Math.PI;
+                        correction = dist / Math.sin(mAng);
+                    } else {
+                        // quadrant iv
+                        const mAng = this.angle - 3 * Math.PI / 2;
+                        correction = dist / Math.cos(mAng);
+                    }
+                }
+                this.beeRadius -= correction;
+            }
+
+            this.calculateBeePos();
+
+            if(Math.abs(this.beePos.x) + this.radius >= 506) {
+                const dist = (Math.abs(this.beePos.x) + this.radius - 506);
+                var correction;
+                if(this.beePos.x > 0) {
+                    // we are hitting the right wall
+                    // the angle must be in quadrant i or iv
+                    if(this.angle <= Math.PI / 4) {
+                        // We are in quadrant i
+                        correction = dist / Math.cos(this.angle);
+                    } else {
+                        // We are in quadrant iv
+                        const mAng = Math.PI * 2 - this.angle;
+                        correction = dist / Math.cos(mAng);
+                    }
+                } else {
+                    // we are hitting the left wall
+                    // the angle must be in quadrant ii or iii
+                    if(this.angle <= Math.PI / 2) {
+                        // we are in quadrant ii
+                        const mAng = Math.PI - this.angle;
+                        correction = dist / Math.cos(mAng);
+                    } else {
+                        // we are in quadrant iii
+                        const mAng = 3 * Math.PI / 2 - this.angle;
+                        correction = dist / Math.sin(mAng);
+                    }
+                }
+                this.beeRadius -= correction;
+            }
+
+            this.calculateBeePos();
+
+            // Check collision with player
+            const dx = this.beePos.x - game.player.pos.x;
+            const dy = this.beePos.y - game.player.pos.y;
+            const radDist = this.radius + game.player.radius;
+            const distSq = dx * dx + dy * dy;
+            if(distSq <= radDist * radDist) {
+                game.isGameOver = true;
+            } else {
+                const dist = Math.sqrt(distSq) - (this.radius + game.player.radius);
+                if(dist <= 32) {
+                    game.score += (-67*dist*dist/1024 + 2*dist + 4) * 2 * deltaTime / 100;
+                } else {
+                    game.score += 2 * deltaTime / 100;
+                }
+            }
+        }
+    };
+
+    this.draw = function (ctx) {
+        const mX = this.beePos.x + (canvasWidth/2);
+        const mY = this.beePos.y * -1 + 144 + 202;
+
+        const mX1 = this.pos.x + (canvasWidth/2);
+        const mY1 = this.pos.y * -1 + 144 + 202;
+
+        // this.angle = Math.atan2(this.vel.y, this.vel.x) + Math.PI/2;
+
+        ctx.translate(mX, mY);
+        ctx.rotate(-this.angle);
+        // TODO: Animated
+        ctx.drawImage(resources.laserbee, -46, -26);
+        if(debug) {
+            ctx.beginPath();
+            ctx.fillStyle = 'red';
+            ctx.arc(0, 0, this.radius, 0, 360);
+            ctx.fill();
+        }
+        ctx.rotate(this.angle);
+        ctx.translate(-mX, -mY);
+
+        if(debug) {
+            ctx.beginPath();
+            ctx.fillStyle = 'purple';
+            ctx.arc(mX1, mY1, this.radius, 0, 360);
+            ctx.fill();
+            ctx.strokeStyle = 'white';
+            ctx.moveTo(mX1, mY1);
+            ctx.lineTo(mX, mY);
+            ctx.stroke();
+        }
+    };
+}
+
 function BeeTime() {
     this.pos = new Vector2(0, 0);
     this.ttl = 3000;

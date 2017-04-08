@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c151c6b8-4c8a-4504-ac4d-2dc6cf1a03eb" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script.js" afterPath="$PROJECT_DIR$/script.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,31 +27,32 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="807" column="24" lean-forward="false" selection-start-line="807" selection-start-column="24" selection-end-line="807" selection-end-column="24" />
+            <state relative-caret-position="359">
+              <caret line="1307" column="48" lean-forward="false" selection-start-line="1307" selection-start-column="48" selection-end-line="1307" selection-end-column="48" />
               <folding>
+                <element signature="n#!!block;n#Vector2#0" expanded="false" />
                 <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
                 <element signature="n#!!block;n#Player#0" expanded="false" />
-                <element signature="n#!!block;n#BasicBee#0" expanded="false" />
                 <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
                 <element signature="n#!!block;n#Honey#0" expanded="false" />
                 <element signature="n#!!block;n#BigBee#0" expanded="false" />
                 <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
                 <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
                 <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-                <element signature="e#36755#37534#0" expanded="false" />
-                <element signature="e#37649#38694#0" expanded="false" />
+                <element signature="e#34967#35746#0" expanded="false" />
+                <element signature="e#35861#36906#0" expanded="false" />
                 <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
                 <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
                 <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
                 <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
                 <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-                <element signature="e#46439#46660#0" expanded="false" />
-                <element signature="e#46692#47223#0" expanded="false" />
+                <element signature="e#44651#44872#0" expanded="false" />
+                <element signature="e#44904#45435#0" expanded="false" />
                 <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
                 <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
                 <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-                <element signature="e#61607#61702#0" expanded="false" />
+                <element signature="e#58622#63607#0" expanded="false" />
+                <element signature="e#60316#60411#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -71,6 +73,7 @@
     <findStrings>
       <find>on</find>
       <find>onkey</find>
+      <find>debug</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,7 +119,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -145,6 +147,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -247,7 +250,11 @@
       <workItem from="1486424153400" duration="368000" />
       <workItem from="1487374131134" duration="871000" />
       <workItem from="1487629847962" duration="13000" />
-      <workItem from="1491261197803" duration="864000" />
+      <workItem from="1491261197803" duration="3568000" />
+      <workItem from="1491417764119" duration="939000" />
+      <workItem from="1491427308964" duration="627000" />
+      <workItem from="1491495808813" duration="430000" />
+      <workItem from="1491615513239" duration="3706000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1485222562371</created>
@@ -330,7 +337,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75945000" />
+    <option name="totallyTimeSpent" value="84351000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -388,16 +395,40 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -406,28 +437,93 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
             <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
             <element signature="n#!!block;n#Player#0" expanded="false" />
-            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
             <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
             <element signature="n#!!block;n#Honey#0" expanded="false" />
             <element signature="n#!!block;n#BigBee#0" expanded="false" />
             <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
             <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
             <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-            <element signature="e#36755#37534#0" expanded="false" />
-            <element signature="e#37649#38694#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
             <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
             <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
             <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
             <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
             <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-            <element signature="e#46439#46660#0" expanded="false" />
-            <element signature="e#46692#47223#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
             <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
             <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
             <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-            <element signature="e#61607#61702#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -436,7 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -445,28 +540,29 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
             <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
             <element signature="n#!!block;n#Player#0" expanded="false" />
-            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
             <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
             <element signature="n#!!block;n#Honey#0" expanded="false" />
             <element signature="n#!!block;n#BigBee#0" expanded="false" />
             <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
             <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
             <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-            <element signature="e#36755#37534#0" expanded="false" />
-            <element signature="e#37649#38694#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
             <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
             <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
             <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
             <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
             <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-            <element signature="e#46439#46660#0" expanded="false" />
-            <element signature="e#46692#47223#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
             <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
             <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
             <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-            <element signature="e#61607#61702#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -475,7 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -484,28 +579,29 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
             <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
             <element signature="n#!!block;n#Player#0" expanded="false" />
-            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
             <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
             <element signature="n#!!block;n#Honey#0" expanded="false" />
             <element signature="n#!!block;n#BigBee#0" expanded="false" />
             <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
             <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
             <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-            <element signature="e#36755#37534#0" expanded="false" />
-            <element signature="e#37649#38694#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
             <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
             <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
             <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
             <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
             <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-            <element signature="e#46439#46660#0" expanded="false" />
-            <element signature="e#46692#47223#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
             <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
             <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
             <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-            <element signature="e#61607#61702#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -514,7 +610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -523,28 +618,29 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
             <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
             <element signature="n#!!block;n#Player#0" expanded="false" />
-            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
             <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
             <element signature="n#!!block;n#Honey#0" expanded="false" />
             <element signature="n#!!block;n#BigBee#0" expanded="false" />
             <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
             <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
             <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-            <element signature="e#36755#37534#0" expanded="false" />
-            <element signature="e#37649#38694#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
             <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
             <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
             <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
             <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
             <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-            <element signature="e#46439#46660#0" expanded="false" />
-            <element signature="e#46692#47223#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
             <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
             <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
             <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-            <element signature="e#61607#61702#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -553,7 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -562,28 +657,68 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
             <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
             <element signature="n#!!block;n#Player#0" expanded="false" />
-            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
             <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
             <element signature="n#!!block;n#Honey#0" expanded="false" />
             <element signature="n#!!block;n#BigBee#0" expanded="false" />
             <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
             <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
             <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-            <element signature="e#36755#37534#0" expanded="false" />
-            <element signature="e#37649#38694#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
             <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
             <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
             <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
             <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
             <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-            <element signature="e#46439#46660#0" expanded="false" />
-            <element signature="e#46692#47223#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
             <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
             <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
             <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-            <element signature="e#61607#61702#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
+            <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
+            <element signature="n#!!block;n#Player#0" expanded="false" />
+            <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
+            <element signature="n#!!block;n#Honey#0" expanded="false" />
+            <element signature="n#!!block;n#BigBee#0" expanded="false" />
+            <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
+            <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
+            <element signature="n#!!block;n#BeeTime#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
+            <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
+            <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
+            <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
+            <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
+            <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
+            <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
+            <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -592,7 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
           <caret line="23" column="7" lean-forward="false" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,28 +735,29 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
             <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
             <element signature="n#!!block;n#Player#0" expanded="false" />
-            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
             <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
             <element signature="n#!!block;n#Honey#0" expanded="false" />
             <element signature="n#!!block;n#BigBee#0" expanded="false" />
             <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
             <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
             <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-            <element signature="e#36755#37534#0" expanded="false" />
-            <element signature="e#37649#38694#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
             <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
             <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
             <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
             <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
             <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-            <element signature="e#46439#46660#0" expanded="false" />
-            <element signature="e#46692#47223#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
             <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
             <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
             <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-            <element signature="e#61607#61702#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -631,7 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
           <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -640,28 +774,29 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
             <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
             <element signature="n#!!block;n#Player#0" expanded="false" />
-            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
             <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
             <element signature="n#!!block;n#Honey#0" expanded="false" />
             <element signature="n#!!block;n#BigBee#0" expanded="false" />
             <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
             <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
             <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-            <element signature="e#36755#37534#0" expanded="false" />
-            <element signature="e#37649#38694#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
             <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
             <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
             <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
             <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
             <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-            <element signature="e#46439#46660#0" expanded="false" />
-            <element signature="e#46692#47223#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
             <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
             <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
             <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-            <element signature="e#61607#61702#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -706,37 +841,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="807" column="24" lean-forward="false" selection-start-line="807" selection-start-column="24" selection-end-line="807" selection-end-column="24" />
+        <state relative-caret-position="359">
+          <caret line="1307" column="48" lean-forward="false" selection-start-line="1307" selection-start-column="48" selection-end-line="1307" selection-end-column="48" />
           <folding>
+            <element signature="n#!!block;n#Vector2#0" expanded="false" />
             <element signature="n#!!block;n#SpriteSheet#0" expanded="false" />
             <element signature="n#!!block;n#Player#0" expanded="false" />
-            <element signature="n#!!block;n#BasicBee#0" expanded="false" />
             <element signature="n#!!block;n#HoneyBee#0" expanded="false" />
             <element signature="n#!!block;n#Honey#0" expanded="false" />
             <element signature="n#!!block;n#BigBee#0" expanded="false" />
             <element signature="n#!!block;n#EldritchBee#0" expanded="false" />
             <element signature="n#!!block;n#BumbleBee#0" expanded="false" />
             <element signature="n#!!block;n#BeeTime#0" expanded="false" />
-            <element signature="e#36755#37534#0" expanded="false" />
-            <element signature="e#37649#38694#0" expanded="false" />
+            <element signature="e#34967#35746#0" expanded="false" />
+            <element signature="e#35861#36906#0" expanded="false" />
             <element signature="n#!!block;n#TitleScreen#0" expanded="false" />
             <element signature="n#!!block;n#OptionsScreen#0" expanded="false" />
             <element signature="n#!!block;n#HelpScreen#0" expanded="false" />
             <element signature="n#!!block;n#CreditsScreen#0" expanded="false" />
             <element signature="n#!!block;n#PauseScreen#0" expanded="false" />
-            <element signature="e#46439#46660#0" expanded="false" />
-            <element signature="e#46692#47223#0" expanded="false" />
+            <element signature="e#44651#44872#0" expanded="false" />
+            <element signature="e#44904#45435#0" expanded="false" />
             <element signature="n#!!block;n#GameOverScreen#0" expanded="false" />
             <element signature="n#!!block;n#HighScoreScreen#0" expanded="false" />
             <element signature="n#!!block;n#SetUpScreen#0" expanded="false" />
-            <element signature="e#61607#61702#0" expanded="false" />
+            <element signature="e#58622#63607#0" expanded="false" />
+            <element signature="e#60316#60411#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -804,45 +804,63 @@ function LaserBee() {
 
     this.pos = new Vector2(0, 0);
     this.vel = new Vector2(0, 0);
-    this.speed = 0.1;
-    this.fireSpeed = 10;
+    this.speed = 0.01;
+    this.fireSpeed = 1;
     this.name = "LasB";
     this.radius = 20;
 
+    this.chargePercent = 0;
+    this.chargeSpeed = 0.075;
+
+    this.driftCooldown = 3000;
+    this.currentDrift = 0;
+
     this.beePos = new Vector2(0, 0);
-    this.beeRadius = 0;
-    this.angVel = -0.002;
     this.radVel = 0.01;
     this.maxRad = 100;
     this.angle = 0;
 
     this.hasEntered = false;
 
-    this.calculateBeePos = function () {
-        this.beePos.x = this.beeRadius * Math.cos(this.angle) + this.pos.x;
-        this.beePos.y = this.beeRadius * Math.sin(this.angle) + this.pos.y;
-    };
+    this.spriteSheet = new SpriteSheet(resources.laserbee, 60, 72, 20, this.pos.x, this.pos.y, 0, 4);
 
     this.update = function (deltaTime) {
-        const invNorm = 1/Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y);
-        this.pos.x += this.vel.x * deltaTime * this.speed * invNorm;
-        this.pos.y += this.vel.y * deltaTime * this.speed * invNorm;
-
-        this.angle += this.angVel * deltaTime;
-        this.calculateBeePos();
-
-        if(this.beeRadius < this.maxRad) {
-            this.beeRadius += this.radVel * deltaTime;
+        if(this.state == this.StateEnum.CHARGE) {
+            this.angle = Math.atan2(game.player.pos.y - this.pos.y, game.player.pos.x - this.pos.x) - Math.PI/2;
+            this.vel.x = 0;
+            this.vel.y = 0;
+            this.chargePercent += this.chargeSpeed * deltaTime;
+            if(this.chargePercent >= 100) {
+                this.state = this.StateEnum.FIRE;
+                this.chargePercent = 0;
+            } else {
+                this.spriteSheet.frame = Math.round(this.spriteSheet.numFrames * (this.chargePercent/100));
+            }
+        } else if(this.state == this.StateEnum.DRIFT) {
+            if(this.hasEntered) {
+                this.currentDrift += deltaTime;
+                if(this.currentDrift >= this.driftCooldown) {
+                    this.state = this.StateEnum.CHARGE;
+                    this.currentDrift = 0;
+                }
+            }
+            this.angle = Math.atan2(this.vel.y, this.vel.x) - Math.PI / 2;
+        } else if(this.state == this.StateEnum.FIRE) {
+            this.spriteSheet.frame = 0;
+            this.vel.x = Math.cos(this.angle + Math.PI / 2);
+            this.vel.y = Math.sin(this.angle + Math.PI / 2);
         }
+        const invNorm = (this.vel.x != 0 || this.vel.y != 0) ? 1/Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y) : 0;
+        this.pos.x += this.vel.x * deltaTime * (this.state == this.StateEnum.FIRE ? this.fireSpeed : this.speed) * invNorm;
+        this.pos.y += this.vel.y * deltaTime * (this.state == this.StateEnum.FIRE ? this.fireSpeed : this.speed) * invNorm;
 
         // We'll start the bee outside the room's bounds
         if(!this.hasEntered) {
-            if(Math.abs(this.beePos.y) + this.radius < 202 && Math.abs(this.beePos.x) + this.radius < 506) {
+            if(Math.abs(this.pos.y) + this.radius < 202 && Math.abs(this.pos.x) + this.radius < 506) {
                 this.hasEntered = true;
             }
         } else {
             // Check for collision once we've gotten inside the room!
-
             // collide with edges of screen
             if(Math.abs(this.pos.y) + this.radius >= 202) {
                 const dist = 202 - (Math.abs(this.pos.y) + this.radius);
@@ -855,6 +873,9 @@ function LaserBee() {
                 this.vel.y *= -1;
                 this.vel.x = Math.random() * 2 - 1;
                 this.vel.y = Math.random() * (this.vel.y < 0 ? -1 : 1);
+                if(this.state == this.StateEnum.FIRE) {
+                    this.state = this.StateEnum.DRIFT;
+                }
             }
             if(Math.abs(this.pos.x) + this.radius >= 506) {
                 const dist = 506 - (Math.abs(this.pos.x) + this.radius);
@@ -867,85 +888,14 @@ function LaserBee() {
                 this.vel.x *= -1;
                 this.vel.x = Math.random() * (this.vel.x < 0 ? -1 : 1);
                 this.vel.y = Math.random() * 2 - 1;
-            }
-
-            this.calculateBeePos();
-
-            // Set the angle to bee positive
-            while(this.angle >= Math.PI * 2) {
-                this.angle -= Math.PI * 2;
-            }
-            while(this.angle < 0) {
-                this.angle += Math.PI * 2;
-            }
-
-            if(Math.abs(this.beePos.y) + this.radius >= 202) {
-                const dist = (Math.abs(this.beePos.y) + this.radius - 202);
-                var correction;
-                if(this.beePos.y > 0) {
-                    // We are hitting the upper wall
-                    // we must be in quadrant i or ii
-                    if(this.angle <= Math.PI / 4) {
-                        // quadrant i
-                        correction = dist / Math.sin(this.angle);
-                    } else {
-                        // quadrant ii
-                        const mAng = Math.PI - this.angle;
-                        correction = dist / Math.sin(mAng);
-                    }
-                } else {
-                    // We are hitting the bottom wall
-                    // Either quadrant iii or iv
-                    if(this.angle <= 3 * Math.PI / 2) {
-                        // quadrant iii
-                        const mAng = this.angle - Math.PI;
-                        correction = dist / Math.sin(mAng);
-                    } else {
-                        // quadrant iv
-                        const mAng = this.angle - 3 * Math.PI / 2;
-                        correction = dist / Math.cos(mAng);
-                    }
+                if(this.state == this.StateEnum.FIRE) {
+                    this.state = this.StateEnum.DRIFT;
                 }
-                this.beeRadius -= correction;
             }
-
-            this.calculateBeePos();
-
-            if(Math.abs(this.beePos.x) + this.radius >= 506) {
-                const dist = (Math.abs(this.beePos.x) + this.radius - 506);
-                var correction;
-                if(this.beePos.x > 0) {
-                    // we are hitting the right wall
-                    // the angle must be in quadrant i or iv
-                    if(this.angle <= Math.PI / 4) {
-                        // We are in quadrant i
-                        correction = dist / Math.cos(this.angle);
-                    } else {
-                        // We are in quadrant iv
-                        const mAng = Math.PI * 2 - this.angle;
-                        correction = dist / Math.cos(mAng);
-                    }
-                } else {
-                    // we are hitting the left wall
-                    // the angle must be in quadrant ii or iii
-                    if(this.angle <= Math.PI / 2) {
-                        // we are in quadrant ii
-                        const mAng = Math.PI - this.angle;
-                        correction = dist / Math.cos(mAng);
-                    } else {
-                        // we are in quadrant iii
-                        const mAng = 3 * Math.PI / 2 - this.angle;
-                        correction = dist / Math.sin(mAng);
-                    }
-                }
-                this.beeRadius -= correction;
-            }
-
-            this.calculateBeePos();
 
             // Check collision with player
-            const dx = this.beePos.x - game.player.pos.x;
-            const dy = this.beePos.y - game.player.pos.y;
+            const dx = this.pos.x - game.player.pos.x;
+            const dy = this.pos.y - game.player.pos.y;
             const radDist = this.radius + game.player.radius;
             const distSq = dx * dx + dy * dy;
             if(distSq <= radDist * radDist) {
@@ -962,37 +912,30 @@ function LaserBee() {
     };
 
     this.draw = function (ctx) {
-        const mX = this.beePos.x + (canvasWidth/2);
-        const mY = this.beePos.y * -1 + 144 + 202;
+        if(this.state == this.StateEnum.CHARGE) {
+            // Draw a targeting laser
+            const mX = this.pos.x + (canvasWidth/2);
+            const mY = this.pos.y * -1 + 144 + 202;
 
-        const mX1 = this.pos.x + (canvasWidth/2);
-        const mY1 = this.pos.y * -1 + 144 + 202;
+            const playerDeltaX = game.player.pos.x - this.pos.x;
+            const playerDeltaY = game.player.pos.y - this.pos.y;
 
-        // this.angle = Math.atan2(this.vel.y, this.vel.x) + Math.PI/2;
-
-        ctx.translate(mX, mY);
-        ctx.rotate(-this.angle);
-        // TODO: Animated
-        ctx.drawImage(resources.laserbee, -46, -26);
-        if(debug) {
+            ctx.translate(mX, mY);
+            ctx.rotate(-Math.PI/2);
             ctx.beginPath();
-            ctx.fillStyle = 'red';
-            ctx.arc(0, 0, this.radius, 0, 360);
-            ctx.fill();
-        }
-        ctx.rotate(this.angle);
-        ctx.translate(-mX, -mY);
-
-        if(debug) {
-            ctx.beginPath();
-            ctx.fillStyle = 'purple';
-            ctx.arc(mX1, mY1, this.radius, 0, 360);
-            ctx.fill();
-            ctx.strokeStyle = 'white';
-            ctx.moveTo(mX1, mY1);
-            ctx.lineTo(mX, mY);
+            ctx.moveTo(0,0);
+            ctx.lineTo(playerDeltaY, playerDeltaX);
+            ctx.strokeStyle="red";
+            ctx.lineWidth=3;
             ctx.stroke();
+            ctx.rotate(Math.PI/2);
+            ctx.translate(-mX, -mY);
         }
+
+        this.spriteSheet.pos.x = this.pos.x;
+        this.spriteSheet.pos.y = this.pos.y;
+        this.spriteSheet.rotation = this.angle;
+        this.spriteSheet.draw(ctx);
     };
 }
 
@@ -1362,7 +1305,7 @@ function GameScreen() {
         this.numSpawnedAtOnce = 2;
         this.isGameOver = false;
 
-        this.types = "bb--Bb--HB-UU-UB--E";
+        this.types = "bb--BB--UU--EH--EH--LLLL--";
         this.pickupTypes = [BeeTime];
         this.currentSpawn = 0;
 
@@ -1433,6 +1376,12 @@ function GameScreen() {
                 } else if(this.types.charAt(this.currentSpawn) == 'E') {
                     enemy = new EldritchBee();
                     const spawn = this.spawners[Math.random() > 0.5 ? 1 : 0];
+                    enemy.pos = new Vector2(spawn.x, spawn.y);
+                    enemy.vel = new Vector2((enemy.pos.x < -500 ? 1 : (enemy.pos.x > 500 ? -1 : Math.random() * 2 - 1)), (enemy.pos.y < -100 ? 1 : (enemy.pos.y > 100 ? -1 : Math.random() * 2 - 1)));
+                    game.enemies.push(enemy);
+                } else if(this.types.charAt(this.currentSpawn) == 'L') {
+                    enemy = new LaserBee();
+                    const spawn = this.spawners.randomElement();
                     enemy.pos = new Vector2(spawn.x, spawn.y);
                     enemy.vel = new Vector2((enemy.pos.x < -500 ? 1 : (enemy.pos.x > 500 ? -1 : Math.random() * 2 - 1)), (enemy.pos.y < -100 ? 1 : (enemy.pos.y > 100 ? -1 : Math.random() * 2 - 1)));
                     game.enemies.push(enemy);
@@ -1727,6 +1676,8 @@ $(function() {
     resources.honeybee.src = "sprites/honeybee.png";
     resources.eldritchbee = new Image();
     resources.eldritchbee.src = "sprites/eldritch_anim.png";
+    resources.laserbee = new Image();
+    resources.laserbee.src = "sprites/laser bee complete.png";
     resources.bgm = null;
     try {
         // Fix up for prefixing
